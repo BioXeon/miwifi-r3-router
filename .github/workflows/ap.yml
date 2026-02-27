@@ -75,16 +75,6 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH xwrt
         ln -sf /workdir/xwrt $GITHUB_WORKSPACE/xwrt
 
-    - name: Cache toolchain
-      uses: actions/cache@v4
-      with:
-        path: |
-          /workdir/xwrt/staging_dir
-          /workdir/xwrt/build_dir
-        key: toolchain-${{ env.REPO_BRANCH }}-${{ hashFiles('ap.config') }}
-        restore-keys: |
-          toolchain-${{ env.REPO_BRANCH }}-
-
     - name: Cache downloaded packages
       uses: actions/cache@v4
       with:
